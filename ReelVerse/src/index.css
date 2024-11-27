@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.scrollbar-hide {
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; 
+}  
+
+select:focus {
+    outline: none;
+    border-color: #6366f1; /* Indigo */
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5);
+}
+  
+button:hover {
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+  
+button svg {
+    transition: transform 0.2s ease-in-out;
+}
+
+button:hover svg {
+    transform: rotate(180deg);
+}
+
+.icon:hover{
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(360deg);
+}
+  
