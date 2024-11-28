@@ -13,6 +13,9 @@ Setelah login, sistem akan memastikan apakah Anda masuk sebagai User atau Admin,
 #### a. Login sebagai User
 Sebagai User, Anda akan diarahkan ke halaman Home, dengan berbagai navigasi menarik, termasuk:
 
+##### Home
+menampilkan daftar film tranding pada tahun 2024 
+
 ##### List Film
 Jelajahi daftar film lengkap yang tersedia di website.
 Pilih film yang Anda inginkan untuk mulai menonton.
