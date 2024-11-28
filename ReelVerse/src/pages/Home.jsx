@@ -26,6 +26,7 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
+    // eslint-disable-next-line no-unused-vars
     const [role, setRole] = useState("");
 
     const totalPages = Math.ceil(movies.length / itemsPerPage);
