@@ -28,6 +28,7 @@ const Login = () => {
         Cookies.set('role', data.role, { expires: 1 });
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("itsData", JSON.stringify(data));
+        localStorage.setItem("userLogin", JSON.stringify({username,password}))
         Cookies.get("role") == "admin" ? navigate("/admin/dash") : navigate("/user/");
       } else {
         setError('Login failed. Please check your username and password.');

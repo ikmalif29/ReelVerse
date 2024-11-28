@@ -15,7 +15,7 @@ const FilmController = () => {
   const [genre, setGenre] = useState([]);
   const token = Cookies.get("token");
   const role = Cookies.get('role');
-  
+
   useEffect(() => {
     const fetchFilms = async () => {
       try {
@@ -166,17 +166,17 @@ const FilmController = () => {
     };
 
     return (
-      <main className="flex">
+      <main className="flex gap-10">
         <div className="w-64 h-screen bg-gray-200">
           <SideBar />
         </div>
-        <div className="p-6   shadow-md min-h-screen w-full">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex gap-4 items-center">
-              <label className="flex items-center gap-2">
-                <span className="font-semibold">Sort By:</span>
+        <div className="p-6 shadow-md min-h-screen w-full bg-gray-900 ">
+          <div className="flex items-center justify-between mb-6 p-4 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 rounded-lg shadow-lg">
+            <div className="flex gap-6 items-center">
+              <label className="flex items-center gap-3">
+                <span className="font-semibold text-white">Sort By:</span>
                 <select
-                  className="rounded-lg border-2 border-solid border-gray-200 h-9 text-sm"
+                  className="rounded-lg border-2 border-solid border-gray-600 h-10 text-sm text-white bg-gray-800 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
                 >
@@ -185,12 +185,12 @@ const FilmController = () => {
                   <option value="rilis">Rilis</option>
                 </select>
               </label>
-              <label className="flex items-center gap-2">
-                <span className="font-semibold">Order:</span>
+              <label className="flex items-center gap-3">
+                <span className="font-semibold text-white">Order:</span>
                 <select
                   value={sortOrder}
                   onChange={(e) => setSortOrder(e.target.value)}
-                  className="h-9 p-2 text-sm rounded-lg outline-blue-400 border-2 border-solid border-gray-500"
+                  className="h-10 text-sm rounded-lg bg-gray-800 text-white border-2 border-solid border-gray-600 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 >
                   <option value="asc">Ascending</option>
                   <option value="desc">Descending</option>
@@ -209,58 +209,63 @@ const FilmController = () => {
                     video: null,
                   })
                 }
-                className="flex items-center gap-2 p-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-colors"
+                className="flex items-center gap-3 p-4 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-colors transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400"
               >
-                <PlusCircle size={20} className="text-white" /> Add New Film
+                <PlusCircle size={20} className="text-white" />
+                <span>Add New Film</span>
               </button>
             )}
           </div>
+
           <div className="mt-6">
             {filterData.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
                 {filterData.map((film) => (
                   <div
                     key={film.id_film}
-                    className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                    className="relative bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 text-white p-6 rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 ease-in-out"
                   >
-                    <Link to={`/watch/${film.id_film}`}>
-                      <h2 className="text-xl font-semibold mb-2">
+                    <Link to={`/watch/${film.id_film}`} className="block group">
+                      <div className="relative">
+                        <img
+                          src={film.image}
+                          alt="Film cover"
+                          className="w-full h-56 object-cover rounded-lg transition-transform transform group-hover:scale-110 group-hover:rotate-3"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black opacity-60 rounded-lg"></div>
+                      </div>
+                      <h2 className="text-2xl font-bold mt-4 group-hover:text-yellow-300 transition-colors duration-300">
                         {film.judul_film}
                       </h2>
-                      <img
-                        src={film.image}
-                        alt="not found"
-                        className="w-full h-40 object-cover mb-2 rounded-lg"
-                      />
-                      <p className="text-gray-600">{film.artist}</p>
-                      <p className="text-gray-500">
-                        {new Date(film.rilis).toLocaleDateString()}
-                      </p>
+                      <p className="text-gray-300 text-sm">{film.artist}</p>
+                      <p className="text-gray-200 text-xs">{new Date(film.rilis).toLocaleDateString()}</p>
                     </Link>
-                    {role == "admin" &&
-                      <div className="mt-2 flex space-x-2">
+                    {role === "admin" && (
+                      <div className="absolute bottom-4 left-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <button
                           onClick={() => setUpdateFilm(film)}
-                          className="text-blue-500 hover:text-blue-600 p-2 rounded-md border border-blue-500 hover:border-blue-600 transition-colors"
+                          className="text-blue-500 hover:text-blue-600 p-2 rounded-full border-2 border-blue-500 hover:border-blue-600 transition-all"
                           aria-label="Edit film"
                         >
                           <FilePenLine size={20} />
                         </button>
                         <button
                           onClick={() => handleDeleteFilm(film.id_film)}
-                          className="text-red-500 hover:text-red-600 p-2 rounded-md border border-red-500 hover:border-red-600 transition-colors"
+                          className="text-red-500 hover:text-red-600 p-2 rounded-full border-2 border-red-500 hover:border-red-600 transition-all"
                           aria-label="Delete film"
                         >
                           <Trash2 size={20} />
                         </button>
-                      </div>}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500">No Film available.</p>
+              <p className="text-gray-500 text-center col-span-4">No films available.</p>
             )}
           </div>
+
           {newFilm && (
             <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
               <div className="bg-white p-8 rounded-lg w-full max-w-lg shadow-lg">

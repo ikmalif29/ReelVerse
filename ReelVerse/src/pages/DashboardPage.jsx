@@ -48,7 +48,9 @@ const DashboardPage = () => {
 
     return (
         <div className="flex h-screen">
-            <SideBar />
+            <div className="w-64 h-screen bg-gray-200">
+                <SideBar />
+            </div>
             {/* Main Content */}
             <div className="flex-1 p-6 bg-gray-900 overflow-auto">
                 <div className="text-center text-white text-3xl font-semibold mb-8">
@@ -89,7 +91,7 @@ const DashboardPage = () => {
                     {/* Bar Chart */}
                     <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
                         <div className="text-center mb-4">
-                            <span className="text-2xl text-white font-semibold">Monthly Sales</span>
+                            <span className="text-2xl text-white font-semibold">Monthly Watching</span>
                         </div>
                         <div className="flex justify-center items-center">
                             <Bar data={salesData} options={{ responsive: true }} />

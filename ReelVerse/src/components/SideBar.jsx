@@ -10,7 +10,7 @@ const SideBar = () => {
     };
 
     return (
-        <div className="flex flex-col h-screen w-64 bg-gray-900 border-r border-gray-700 shadow-md">
+        <div className="flex flex-col h-screen w-64 bg-gray-900 border-r border-gray-700 shadow-md fixed">
             <div className="flex justify-center py-6">
                 <span className="text-xl text-white font-bold">Admin Panel</span>
             </div>
