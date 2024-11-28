@@ -111,7 +111,8 @@ const ListFilm = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -50 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        style={{ willChange: "transform, opacity" }}
       >
         <div className="w-full p-8">
           <h1 className="text-4xl font-bold text-center mb-8 animate-pulse">
