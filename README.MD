@@ -3,28 +3,37 @@
 ReelVerse dirancang untuk menjembatani kesenjangan antara penonton biasa dan pecinta film sejati. Situs ini menyediakan antarmuka yang elegan dan interaktif untuk menjelajahi perpustakaan film yang luas, lengkap dengan deskripsi detail, informasi pemeran dan kru, trailer, serta opsi streaming.
 
 ## Fitur Utama
+### 1. Masuk ke Akun Anda
+Jika Anda sudah memiliki akun, gunakan fitur Sign In untuk login dan mulai menjelajahi ReelVerse.
+Jika belum memiliki akun, gunakan fitur Sign Up untuk mendaftar dan bergabung ke komunitas ReelVerse.
 
-### Pencarian dan Penemuan
-Fitur pencarian intuitif memungkinkan pengguna menemukan film berdasarkan judul, genre, sutradara, atau tahun rilis.
-Sistem rekomendasi yang dipersonalisasi menyarankan film berdasarkan preferensi pengguna.
+### 2. Login Sebagai User atau Admin
+Setelah login, sistem akan memastikan apakah Anda masuk sebagai User atau Admin, dengan pengalaman yang berbeda untuk masing-masing:
 
-### Detail dan Pratinjau Film
-Informasi lengkap untuk setiap film, termasuk sinopsis, pemeran, sutradara, tanggal rilis, dan penilaian pengguna.
-Pratinjau dan trailer berkualitas tinggi tersedia untuk setiap film.
-### Tonton Film Secara Online
-Halaman Watch khusus memungkinkan pengguna streaming film secara langsung.
-Kualitas streaming adaptif untuk pengalaman menonton tanpa gangguan di berbagai perangkat.
-### Pengalaman Pengguna Interaktif
-Antarmuka yang bersih dan modern dengan animasi dan transisi untuk navigasi yang lebih menyenangkan.
-Tema gelap yang sesuai dengan suasana sinematik.
-### Komponen Pencarian
-Fitur Search memberikan hasil secara real-time, termasuk judul film, artis, tanggal rilis, dan thumbnail.
-Klik pada hasil pencarian akan mengarahkan pengguna ke halaman detail untuk informasi lebih lanjut.
-### Penelusuran yang Terorganisir
-Filter untuk genre, film trending, film dengan rating tertinggi, dan judul yang baru ditambahkan.
-Pagination yang mudah digunakan untuk menjelajahi koleksi film yang luas.
-### Integrasi Akun Pengguna
-Buat akun untuk menyimpan film favorit, melacak riwayat tontonan, dan mendapatkan rekomendasi yang dipersonalisasi.
-Sistem login dan registrasi yang aman.
-### Desain Responsif
-Dioptimalkan sepenuhnya untuk perangkat mobile, tablet, dan desktop, memastikan pengalaman terbaik di semua perangkat.
+#### a. Login sebagai User
+Sebagai User, Anda akan diarahkan ke halaman Home, dengan berbagai navigasi menarik, termasuk:
+
+##### List Film
+Jelajahi daftar film lengkap yang tersedia di website.
+Pilih film yang Anda inginkan untuk mulai menonton.
+
+##### Genre Film
+
+Temukan film berdasarkan genre favorit Anda.
+Lihat daftar film yang dikategorikan dengan genre yang lengkap dan terorganisir.
+##### Profile User
+
+Lihat dan kelola data akun Anda, termasuk nama, email, dan preferensi lainnya.
+##### Watch Film
+
+Akses halaman khusus untuk menonton film pilihan Anda dengan kualitas streaming terbaik.
+
+#### b. Login sebagai Admin
+Sebagai Admin, Anda memiliki akses eksklusif untuk mengontrol semua aspek website.
+##### Kelola Film dan Genre
+Tambahkan, edit, atau hapus film dan genre yang tersedia di website.
+Pengaturan admin hanya diketahui oleh Anda sebagai pemilik website, menjaga kontrol penuh atas ReelVerse.
+### 3. Fitur Logout
+Baik User maupun Admin memiliki fitur Logout yang mudah diakses, memastikan keamanan akun Anda setelah selesai menggunakan website.
+
+ReelVerse memberikan pengalaman yang terorganisir, menyenangkan, dan aman, baik untuk menonton film sebagai User maupun untuk mengelola konten sebagai Admin. 🎬
