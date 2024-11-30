@@ -11,8 +11,10 @@ app.use(express.json());
 const __dirname = path.resolve();
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true
+  origin: ['https://front-end-ten-sand.vercel.app','http://localhost:5173'],
+  // origin: ['http://localhost:5173'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Sesuaikan dengan metode yang Anda izinkan
+  credentials: true,
 }));
 
 const storage = multer.diskStorage({

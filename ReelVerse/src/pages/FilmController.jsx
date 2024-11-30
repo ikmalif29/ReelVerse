@@ -225,7 +225,7 @@ const FilmController = () => {
                     key={film.id_film}
                     className="relative bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 text-white p-6 rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 ease-in-out"
                   >
-                    <Link to={`/watch/${film.id_film}`} className="block group">
+                    <Link to={`/watch/${film.id_film}`} className="block">
                       <div className="relative">
                         <img
                           src={film.image}
@@ -241,17 +241,17 @@ const FilmController = () => {
                       <p className="text-gray-200 text-xs">{new Date(film.rilis).toLocaleDateString()}</p>
                     </Link>
                     {role === "admin" && (
-                      <div className="absolute bottom-4 left-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 right-4 flex space-x-4">
                         <button
                           onClick={() => setUpdateFilm(film)}
-                          className="text-blue-500 hover:text-blue-600 p-2 rounded-full border-2 border-blue-500 hover:border-blue-600 transition-all"
+                          className="text-yellow-500 hover:text-yellow-600 p-2 rounded-full border-2 border-yellow-500 hover:border-yellow-900 transition-all"
                           aria-label="Edit film"
                         >
                           <FilePenLine size={20} />
                         </button>
                         <button
                           onClick={() => handleDeleteFilm(film.id_film)}
-                          className="text-red-500 hover:text-red-600 p-2 rounded-full border-2 border-red-500 hover:border-red-600 transition-all"
+                          className="text-red-500 hover:text-red-600 p-2 rounded-full border-2 border-red-500 hover:border-red-900 transition-all"
                           aria-label="Delete film"
                         >
                           <Trash2 size={20} />
@@ -267,99 +267,116 @@ const FilmController = () => {
           </div>
 
           {newFilm && (
-            <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-              <div className="bg-white p-8 rounded-lg w-full max-w-lg shadow-lg">
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 animate-fadeIn">
+              <div className="bg-gray-900 text-white p-8 rounded-xl w-full max-w-lg shadow-2xl transform transition-all scale-95 animate-slideUp">
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
                     handleAddNewFilm();
                   }}
+                  className="space-y-6"
                 >
-                  <h2 className="text-2xl font-bold mb-6">Add New Film</h2>
+                  <h2 className="text-2xl font-bold text-center text-yellow-400 animate-pulse">
+                    Add New Film
+                  </h2>
 
-                  <label className="block mb-2 font-semibold">Judul Film</label>
-                  <input
-                    type="text"
-                    id="judul_film"
-                    value={newFilm.judul_film || ""}
-                    onChange={(e) =>
-                      setNewFilm({ ...newFilm, judul_film: e.target.value })
-                    }
-                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <div className="group relative">
+                    <label className="block mb-2 font-semibold text-gray-300">Judul Film</label>
+                    <input
+                      type="text"
+                      id="judul_film"
+                      value={newFilm.judul_film || ""}
+                      onChange={(e) =>
+                        setNewFilm({ ...newFilm, judul_film: e.target.value })
+                      }
+                      className="border border-gray-700 bg-gray-800 text-white p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                    />
+                  </div>
 
-                  <label className="block mb-2 font-semibold">Artist</label>
-                  <input
-                    type="text"
-                    id="artist"
-                    value={newFilm.artist || ""}
-                    onChange={(e) =>
-                      setNewFilm({ ...newFilm, artist: e.target.value })
-                    }
-                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <div className="group relative">
+                    <label className="block mb-2 font-semibold text-gray-300">Artist</label>
+                    <input
+                      type="text"
+                      id="artist"
+                      value={newFilm.artist || ""}
+                      onChange={(e) =>
+                        setNewFilm({ ...newFilm, artist: e.target.value })
+                      }
+                      className="border border-gray-700 bg-gray-800 text-white p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                    />
+                  </div>
 
-                  <label className="block mb-2 font-semibold">Rilis</label>
-                  <input
-                    type="date"
-                    id="rilis"
-                    value={newFilm.rilis || ""}
-                    onChange={(e) =>
-                      setNewFilm({ ...newFilm, rilis: e.target.value })
-                    }
-                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <div className="group relative">
+                    <label className="block mb-2 font-semibold text-gray-300">Rilis</label>
+                    <input
+                      type="date"
+                      id="rilis"
+                      value={newFilm.rilis || ""}
+                      onChange={(e) =>
+                        setNewFilm({ ...newFilm, rilis: e.target.value })
+                      }
+                      className="border border-gray-700 bg-gray-800 text-white p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                    />
+                  </div>
 
-                  <label className="block mb-2 font-semibold">Genre</label>
-                  <select
-                    id="id_type"
-                    value={newFilm.id_type || ""}
-                    onChange={(e) =>
-                      setNewFilm({
-                        ...newFilm,
-                        id_type: parseInt(e.target.value, 10),
-                      })
-                    }
-                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="" disabled>
-                      Select Genre
-                    </option>
-                    {genre.map((gen) => (
-                      <option key={gen.id_type} value={gen.id_type}>
-                        {gen.genre}
+                  <div className="group relative">
+                    <label className="block mb-2 font-semibold text-gray-300">Genre</label>
+                    <select
+                      id="id_type"
+                      value={newFilm.id_type || ""}
+                      onChange={(e) =>
+                        setNewFilm({
+                          ...newFilm,
+                          id_type: parseInt(e.target.value, 10),
+                        })
+                      }
+                      className="border border-gray-700 bg-gray-800 text-white p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                    >
+                      <option value="" disabled>
+                        Select Genre
                       </option>
-                    ))}
-                  </select>
+                      {genre.map((gen) => (
+                        <option key={gen.id_type} value={gen.id_type}>
+                          {gen.genre}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-                  <label className="block mb-2 font-semibold">Image URL</label>
-                  <input
-                    type="text"
-                    id="image"
-                    value={newFilm.image || ""}
-                    onChange={(e) =>
-                      setNewFilm({ ...newFilm, image: e.target.value })
-                    }
-                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  <label className="block mb-2 font-semibold">video</label>
-                  <input
-                    type="file"
-                    id="video"
-                    onChange={handleFileChange}
-                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  <div className="flex justify-end gap-2">
+                  <div className="group relative">
+                    <label className="block mb-2 font-semibold text-gray-300">Image URL</label>
+                    <input
+                      type="text"
+                      id="image"
+                      value={newFilm.image || ""}
+                      onChange={(e) =>
+                        setNewFilm({ ...newFilm, image: e.target.value })
+                      }
+                      className="border border-gray-700 bg-gray-800 text-white p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                    />
+                  </div>
+
+                  <div className="group relative">
+                    <label className="block mb-2 font-semibold text-gray-300">Video</label>
+                    <input
+                      type="file"
+                      id="video"
+                      onChange={handleFileChange}
+                      className="border border-gray-700 bg-gray-800 text-white p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                    />
+                  </div>
+
+                  <div className="flex justify-between gap-4">
                     <button
                       type="submit"
-                      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+                      className="w-full py-3 px-4 bg-yellow-500 text-black rounded-lg hover:bg-yellow-600 transition-all shadow-md transform hover:scale-105"
                     >
                       Add
                     </button>
                     <button
                       type="button"
                       onClick={() => setNewFilm(null)}
-                      className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
+                      className="w-full py-3 px-4 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-all shadow-md transform hover:scale-105"
                     >
                       Cancel
                     </button>
@@ -368,94 +385,108 @@ const FilmController = () => {
               </div>
             </div>
           )}
+
           {updatedFilms && (
-            <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-              <div className="bg-white p-8 rounded-lg w-full max-w-lg shadow-lg">
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 animate-fadeIn">
+              <div className="bg-gray-900 text-white p-8 rounded-xl w-full max-w-lg shadow-2xl transform transition-all scale-95 animate-slideUp">
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
                     handleUpdateFilm();
                   }}
+                  className="space-y-6"
                 >
-                  <h2 className="text-2xl font-bold mb-6">Add New Film</h2>
+                  <h2 className="text-2xl font-bold text-center text-yellow-400 animate-pulse">
+                    Update Film
+                  </h2>
 
-                  <label className="block mb-2 font-semibold">Judul Film</label>
-                  <input
-                    type="text"
-                    id="judul_film"
-                    value={updatedFilms.judul_film || ""}
-                    onChange={(e) =>
-                      setUpdateFilm({ ...updatedFilms, judul_film: e.target.value })
-                    }
-                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <div className="group relative">
+                    <label className="block mb-2 font-semibold text-gray-300">Judul Film</label>
+                    <input
+                      type="text"
+                      id="judul_film"
+                      value={updatedFilms.judul_film || ""}
+                      onChange={(e) =>
+                        setUpdateFilm({ ...updatedFilms, judul_film: e.target.value })
+                      }
+                      className="border border-gray-700 bg-gray-800 text-white p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                    />
+                  </div>
 
-                  <label className="block mb-2 font-semibold">Artist</label>
-                  <input
-                    type="text"
-                    id="artist"
-                    value={updatedFilms.artist || ""}
-                    onChange={(e) =>
-                      setUpdateFilm({ ...updatedFilms, artist: e.target.value })
-                    }
-                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <div className="group relative">
+                    <label className="block mb-2 font-semibold text-gray-300">Artist</label>
+                    <input
+                      type="text"
+                      id="artist"
+                      value={updatedFilms.artist || ""}
+                      onChange={(e) =>
+                        setUpdateFilm({ ...updatedFilms, artist: e.target.value })
+                      }
+                      className="border border-gray-700 bg-gray-800 text-white p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                    />
+                  </div>
 
-                  <label className="block mb-2 font-semibold">Rilis</label>
-                  <input
-                    type="date"
-                    id="rilis"
-                    value={updatedFilms.rilis || ""}
-                    onChange={(e) =>
-                      setUpdateFilm({ ...updatedFilms, rilis: e.target.value })
-                    }
-                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <div className="group relative">
+                    <label className="block mb-2 font-semibold text-gray-300">Rilis</label>
+                    <input
+                      type="date"
+                      id="rilis"
+                      value={updatedFilms.rilis || ""}
+                      onChange={(e) =>
+                        setUpdateFilm({ ...updatedFilms, rilis: e.target.value })
+                      }
+                      className="border border-gray-700 bg-gray-800 text-white p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                    />
+                  </div>
 
-                  <label className="block mb-2 font-semibold">Image URL</label>
-                  <input
-                    type="text"
-                    id="image"
-                    value={updatedFilms.image || ""}
-                    onChange={(e) =>
-                      setUpdateFilm({ ...updatedFilms, image: e.target.value })
-                    }
-                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <div className="group relative">
+                    <label className="block mb-2 font-semibold text-gray-300">Image URL</label>
+                    <input
+                      type="text"
+                      id="image"
+                      value={updatedFilms.image || ""}
+                      onChange={(e) =>
+                        setUpdateFilm({ ...updatedFilms, image: e.target.value })
+                      }
+                      className="border border-gray-700 bg-gray-800 text-white p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                    />
+                  </div>
 
-                  <label className="block mb-2 font-semibold">Genre</label>
-                  <select
-                    id="id_type"
-                    value={updatedFilms.id_type || ""}
-                    onChange={(e) =>
-                      setUpdateFilm({
-                        ...updatedFilms,
-                        id_type: parseInt(e.target.value, 10),
-                      })
-                    }
-                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="" disabled>
-                      Select Genre
-                    </option>
-                    {genre.map((gen) => (
-                      <option key={gen.id_type} value={gen.id_type}>
-                        {gen.genre}
+                  <div className="group relative">
+                    <label className="block mb-2 font-semibold text-gray-300">Genre</label>
+                    <select
+                      id="id_type"
+                      value={updatedFilms.id_type || ""}
+                      onChange={(e) =>
+                        setUpdateFilm({
+                          ...updatedFilms,
+                          id_type: parseInt(e.target.value, 10),
+                        })
+                      }
+                      className="border border-gray-700 bg-gray-800 text-white p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                    >
+                      <option value="" disabled>
+                        Select Genre
                       </option>
-                    ))}
-                  </select>
+                      {genre.map((gen) => (
+                        <option key={gen.id_type} value={gen.id_type}>
+                          {gen.genre}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-                  <div className="flex justify-end gap-2">
+                  <div className="flex justify-between gap-4">
                     <button
                       type="submit"
-                      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+                      className="w-full py-3 px-4 bg-yellow-500 text-black rounded-lg hover:bg-yellow-600 transition-all shadow-md transform hover:scale-105"
                     >
-                      Add
+                      Update
                     </button>
                     <button
                       type="button"
                       onClick={() => setUpdateFilm(null)}
-                      className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
+                      className="w-full py-3 px-4 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-all shadow-md transform hover:scale-105"
                     >
                       Cancel
                     </button>
